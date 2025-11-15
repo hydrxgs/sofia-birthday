@@ -27,7 +27,7 @@ function drawHearts() {
             return;
         }
         ctx.beginPath();
-        ctx.fillStyle = `rgba(183, 110, 121, ${heart.opacity})`; // Rose Gold
+        ctx.fillStyle = rgba(183, 110, 121, ${heart.opacity}); // Rose Gold
         ctx.moveTo(heart.x, heart.y);
         ctx.quadraticCurveTo(heart.x - heart.size / 2, heart.y - heart.size / 2, heart.x - heart.size, heart.y);
         ctx.quadraticCurveTo(heart.x - heart.size * 1.5, heart.y + heart.size, heart.x, heart.y + heart.size * 1.5);
@@ -48,4 +48,10 @@ animate();
 // Button Interaction
 document.querySelector('.heart-btn').addEventListener('click', () => {
     alert('Sofia, I love you forever and always! ❤️');
+});
+
+// Welcome Notification
+document.getElementById('enter-btn').addEventListener('click', () => {
+    document.getElementById('welcome-notification').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
 });

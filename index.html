@@ -1,70 +1,68 @@
-// Wait for DOM to load
-document.addEventListener('DOMContentLoaded', () => {
-    // Heart Animation
-    const canvas = document.getElementById('heartsCanvas');
-    if (!canvas) {
-        console.log("Canvas element not found!");
-        return;
-    }
-    const ctx = canvas.getContext('2d');
-    if (!ctx) {
-        console.log("Canvas context not available!");
-        return;
-    }
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const hearts = [];
-
-    function createHeart() {
-        const heart = {
-            x: Math.random() * canvas.width,
-            y: canvas.height,
-            size: Math.random() * 20 + 10,
-            speed: Math.random() * 2 + 1,
-            opacity: Math.random() * 0.5 + 0.3
-        };
-        hearts.push(heart);
-    }
-
-    function drawHearts() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        hearts.forEach((heart, index) => {
-            heart.y -= heart.speed;
-            heart.opacity -= 0.002;
-            if (heart.opacity <= 0 || heart.y < 0) {
-                hearts.splice(index, 1);
-                return;
-            }
-            ctx.beginPath();
-            ctx.fillStyle = rgba(183, 110, 121, ${heart.opacity}); // Rose Gold
-            ctx.moveTo(heart.x, heart.y);
-            ctx.quadraticCurveTo(heart.x - heart.size / 2, heart.y - heart.size / 2, heart.x - heart.size, heart.y);
-            ctx.quadraticCurveTo(heart.x - heart.size * 1.5, heart.y + heart.size, heart.x, heart.y + heart.size * 1.5);
-            ctx.quadraticCurveTo(heart.x + heart.size * 1.5, heart.y + heart.size, heart.x + heart.size, heart.y);
-            ctx.quadraticCurveTo(heart.x + heart.size / 2, heart.y - heart.size / 2, heart.x, heart.y);
-            ctx.fill();
-        });
-    }
-
-    function animate() {
-        drawHearts();
-        if (Math.random() < 0.1) createHeart();
-        requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    // Button Interaction
-    document.querySelector('.heart-btn').addEventListener('click', () => {
-        alert('Sofia, I love you forever and always! ❤️');
-    });
-
-    // Ensure audio plays
-    const audio = document.getElementById('background-music');
-    if (audio) {
-        audio.play().catch(error => {
-            console.log("Audio play failed:", error);
-        });
-    }
-});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Sofia! ❤️</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday, My Beautiful Sofia! ❤️</h1>
+        <div class="message">
+            <p>My beautiful Sofia,<br>
+            Welcome to this little home I built for us here… a small place where, even when I’m far away, you can still feel me close.</p>
+            <p>I want to take you back to the year 2000 —<br>
+            twenty-five years ago, the day the world became brighter because you were born.<br>
+            That light shaped my soul long before I knew your name.</p>
+            <p>Maybe the universe had already decided that one day, two souls would meet…<br>
+            and everyone who sees them would say: “This is what true love looks like.”</p>
+            <p>Yes, we met late.<br>
+            Yes, we’ve only spent a short time together.<br>
+            But love doesn’t count days or months —<br>
+            because from the moment I met you, it felt like a miracle…<br>
+            as if I had known you for years, for lifetimes, even before this life.<br>
+            Like my heart had always been waiting for you.</p>
+            <p>I am the happiest and luckiest man alive because I have you.<br>
+            You are the most beautiful part of existence…<br>
+            an angel from another world whose kindness brought meaning to my life and woke my soul again.</p>
+            <p>My life, my world, my future, my girl…<br>
+            I hope you stay by my side forever,<br>
+            so I can give you the life you deserve —<br>
+            because you deserve nothing less than the best.</p>
+            <p>I miss you deeply.<br>
+            I want to hold your hand again,<br>
+            walk with you in the streets or by the sea,<br>
+            kiss you like it’s our very first kiss all over again.</p>
+            <p>I want every night, every day, every moment to be with you —<br>
+            feeling your warmth, your touch, your presence.</p>
+            <p>Maybe I’ve never said this clearly,<br>
+            but I’m proud of myself when I see those beautiful eyes looking at me,<br>
+            when I hear your sweet voice calling my name.</p>
+            <p>Happy Birthday, the moon of my life.<br>
+            Happy Birthday, my beautiful girl.<br>
+            Happy Birthday, the best partner in the world.<br>
+            Happy Birthday, my heart.<br>
+            Happy Birthday, my world.<br>
+            Happy Birthday, the reason I breathe.<br>
+            Happy Birthday, my kind angel.<br>
+            Happy Birthday, my heartbeat.<br>
+            Happy Birthday… ❤️</p>
+        </div>
+        <div class="gallery">
+            <img src="images/photo1.jpg" alt="A beautiful moment with you 💕🌆" class="gallery-img">
+            <img src="images/photo2.jpg" alt="Every kiss feels like a dream 💋😍" class="gallery-img">
+            <img src="images/photo3.jpg" alt="Your love shines everywhere 🐶❤️" class="gallery-img">
+            <img src="images/photo4.jpg" alt="Hand in hand forever 💞🙌" class="gallery-img">
+            <img src="images/photo5.jpg" alt="My heart belongs to you 🔥💖" class="gallery-img">
+        </div>
+        <button class="heart-btn">I Love You Forever ❤️</button>
+    </div>
+    <audio autoplay loop>
+        <source src="music/the-night-we-met.mp3" type="audio/mpeg">
+    </audio>
+    <canvas id="heartsCanvas"></canvas>
+    <script src="script.js"></script>
+</body>
+</html>

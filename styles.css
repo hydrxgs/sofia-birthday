@@ -87,6 +87,7 @@ h1 {
     pointer-events: none;
     z-index: -1;
 }
+
 .notification {
     position: fixed;
     top: 50%;
